@@ -21,18 +21,18 @@ public class ShapeCollectorTestSuite {
         System.out.println("Preparing to execute test #" + testCounter);
     }
 
-@Test
-    public void testAddFigure(){
+    @Test
+    public void testAddFigure() {
         ShapeCollector collector = new ShapeCollector();
         Shape shape1 = new Triangle(23);
 
         collector.addFigure(shape1);
 
-    Assert.assertEquals(shape1,collector.getFigure(0));
-}
+        Assert.assertEquals(shape1, collector.getFigure(0));
+    }
 
-@Test
-    public void testRemoveFigure(){
+    @Test
+    public void testRemoveFigure() {
         ShapeCollector collector = new ShapeCollector();
         Shape shape1 = new Triangle(23);
         Shape shape2 = new Square(33);
@@ -42,10 +42,11 @@ public class ShapeCollectorTestSuite {
 
         collector.removeFigure(shape1);
 
-        Assert.assertEquals(shape2,collector.getFigure(0));
-}
-@Test
-    public void testGetFigure(){
+        Assert.assertEquals(shape2, collector.getFigure(0));
+    }
+
+    @Test
+    public void testGetFigure() {
         ShapeCollector collector = new ShapeCollector();
         Shape shape1 = new Triangle(23);
         Shape shape2 = new Square(33);
@@ -53,15 +54,16 @@ public class ShapeCollectorTestSuite {
         collector.addFigure(shape1);
         collector.addFigure(shape2);
 
-        Assert.assertEquals(shape2,collector.getFigure(1));
+        Assert.assertEquals(shape2, collector.getFigure(1));
     }
-@Test
-    public void testShowFigures(){
+
+    @Test
+    public void testShowFigures() {
         ShapeCollector collector = new ShapeCollector();
         Shape shape1 = new Triangle(23);
 
         collector.addFigure(shape1);
 
-    Assert.assertEquals(true, collector.showFigures());
-}
+        Assert.assertTrue(collector.showFigures());
+    }
 }

@@ -1,6 +1,6 @@
 package com.kodilla.testing.shape;
 
-public class Triangle implements Shape{
+public class Triangle implements Shape {
     private String shapeName;
     private double field;
 
