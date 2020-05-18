@@ -36,6 +36,14 @@ public class Triangle implements Shape {
     }
 
     @Override
+    public String toString() {
+        return "Triangle{" +
+                "shapeName='" + shapeName + '\'' +
+                ", field=" + field +
+                '}';
+    }
+
+    @Override
     public double getField() {
         return field;
     }

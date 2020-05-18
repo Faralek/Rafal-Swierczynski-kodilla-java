@@ -30,6 +30,14 @@ public class Circle implements Shape {
     }
 
     @Override
+    public String toString() {
+        return "Circle{" +
+                "shapeName='" + shapeName + '\'' +
+                ", field=" + field +
+                '}';
+    }
+
+    @Override
     public String getShapeName() {
         shapeName = "circle";
         return shapeName;

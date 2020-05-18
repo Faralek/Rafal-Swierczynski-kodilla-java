@@ -30,6 +30,14 @@ public class Square implements Shape {
     }
 
     @Override
+    public String toString() {
+        return "Square{" +
+                "shapeName='" + shapeName + '\'' +
+                ", field=" + field +
+                '}';
+    }
+
+    @Override
     public String getShapeName() {
         shapeName = "square";
         return shapeName;
