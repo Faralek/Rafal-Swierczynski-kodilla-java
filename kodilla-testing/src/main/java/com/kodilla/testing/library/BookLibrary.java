@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookLibrary {
-    LibraryDatabase libraryDatabase;
+    private final LibraryDatabase libraryDatabase;
 
     public BookLibrary(LibraryDatabase libraryDatabase) {
         this.libraryDatabase = libraryDatabase;
     }
+
 
     public List<Book> listBooksWithCondition(String titleFragment) {
         List<Book> bookList = new ArrayList<Book>();
@@ -19,4 +20,12 @@ public class BookLibrary {
         bookList = resultList;
         return bookList;
     }
+
+   public List<Book> listBooksInHandsOf(LibraryUser libraryUser){
+        return libraryUser.getBooksInHands();
+   }
+
+   public void rentABook (LibraryUser libraryUser, Book book){
+        libraryUser.addABook(book);
+   }
 }

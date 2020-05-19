@@ -1,9 +1,40 @@
 package com.kodilla.testing.library;
 
+import java.util.ArrayList;
+
 public class LibraryUser {
-    String firstname;
-    String lastname;
-    String peselId;
+    private final String firstName;
+    private final String lastName;
+    private final String peselId;
+    private final ArrayList<Book> booksInHands = new ArrayList<>();
+
+    public LibraryUser(String firstName, String lastName, String peselId) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.peselId = peselId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getPeselId() {
+        return peselId;
+    }
+
+
+    public ArrayList<Book> getBooksInHands() {
+
+        return new ArrayList<>(booksInHands);
+    }
+
+    public void addABook(Book book) {
+        booksInHands.add(book);
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -12,42 +43,24 @@ public class LibraryUser {
 
         LibraryUser that = (LibraryUser) o;
 
-        if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
-        if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
+        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
         return peselId != null ? peselId.equals(that.peselId) : that.peselId == null;
     }
 
     @Override
     public int hashCode() {
-        int result = firstname != null ? firstname.hashCode() : 0;
-        result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+        int result = firstName != null ? firstName.hashCode() : 0;
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (peselId != null ? peselId.hashCode() : 0);
         return result;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public String getPeselId() {
-        return peselId;
-    }
-
-    public LibraryUser(String firstname, String lastname, String peselId) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.peselId = peselId;
     }
 
     @Override
     public String toString() {
         return "LibraryUser{" +
-                "firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
+                "firstname='" + firstName + '\'' +
+                ", lastname='" + lastName + '\'' +
                 ", peselId='" + peselId + '\'' +
                 '}';
     }
