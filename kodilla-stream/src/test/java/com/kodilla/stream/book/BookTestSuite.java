@@ -41,7 +41,7 @@ public class BookTestSuite {
     }
 
     @Test
-    public void testGetListUsingIntStream() {
+    public void testGetListUsingIntStream2() {
         //Given
         BookDirectory bookDirectory = new BookDirectory();
 
