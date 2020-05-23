@@ -139,4 +139,29 @@ public class BoardTestSuite {
         //Then
         Assert.assertEquals(2, longTasks);
     }
+    @Test
+    public void testAddTaskListAverageWorkingOnTask() {
+        //Given
+        Board project = prepareTestData();
+
+        //When
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+        List daysTasks = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .map(t -> t.getCreated())
+                .map(d -> LocalDate.now().getDayOfYear() - d.getDayOfYear())
+                .collect(Collectors.toList());
+
+        System.out.println(daysTasks);
+
+        OptionalDouble averageTasks = IntStream.range(0, daysTasks.size())
+                .map(d -> (int) daysTasks.get(d))  //Tutaj pomógł mi IntelliJ - poruszymy to na rozmowie :)
+                .average();
+
+        System.out.println(averageTasks.getAsDouble());
+
+        Assert.assertEquals(10,averageTasks.getAsDouble(),0);
+    }
 }
