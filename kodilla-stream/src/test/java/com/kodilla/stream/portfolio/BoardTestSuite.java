@@ -2,7 +2,6 @@ package com.kodilla.stream.portfolio;
 
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -151,7 +150,8 @@ public class BoardTestSuite {
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
                 .map(t -> t.getCreated())
-                .map(d -> LocalDate.now().getDayOfYear() - d.getDayOfYear())
+                .map(d ->  d.until(LocalDate.now()))
+                .map(t -> t.getDays())
                 .collect(Collectors.toList());
 
         System.out.println(daysTasks);
