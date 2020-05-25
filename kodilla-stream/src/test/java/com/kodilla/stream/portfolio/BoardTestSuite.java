@@ -3,6 +3,7 @@ package com.kodilla.stream.portfolio;
 import org.junit.Assert;
 import org.junit.Test;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalDouble;
@@ -150,8 +151,8 @@ public class BoardTestSuite {
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
                 .map(t -> t.getCreated())
-                .map(d ->  d.until(LocalDate.now()))
-                .map(t -> t.getDays())
+                .map(d -> ChronoUnit.DAYS.between(d,LocalDate.now()))
+                .map(Long::intValue)
                 .collect(Collectors.toList());
 
         System.out.println(daysTasks);
