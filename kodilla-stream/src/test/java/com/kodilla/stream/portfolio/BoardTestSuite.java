@@ -31,7 +31,7 @@ public class BoardTestSuite {
                 "Prepare some HQL queries for analysis",
                 user1,
                 user2,
-                LocalDate.now().minusDays(20),
+                LocalDate.now().minusDays(400),
                 LocalDate.now().minusDays(5));
         Task task3 = new Task("Temperatures entity",
                 "Prepare entity for temperatures",
@@ -43,7 +43,7 @@ public class BoardTestSuite {
                 "Refactor company logger to meet our needs",
                 user3,
                 user2,
-                LocalDate.now().minusDays(10),
+                LocalDate.now().minusDays(200),
                 LocalDate.now().plusDays(25));
         Task task5 = new Task("Optimize searching",
                 "Archive data searching has to be optimized",
@@ -157,12 +157,13 @@ public class BoardTestSuite {
 
         System.out.println(daysTasks);
 
+
         OptionalDouble averageTasks = IntStream.range(0, daysTasks.size())
                 .map(d -> (int) daysTasks.get(d))  //Tutaj pomógł mi IntelliJ - poruszymy to na rozmowie :)
                 .average();
 
         System.out.println(averageTasks.getAsDouble());
 
-        Assert.assertEquals(10,averageTasks.getAsDouble(),0);
+        Assert.assertEquals(200,averageTasks.getAsDouble(),0);
     }
 }
