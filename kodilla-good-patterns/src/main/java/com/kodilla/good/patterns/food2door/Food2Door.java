@@ -4,9 +4,9 @@ public class Food2Door {
 
     public static void main(String[] args) {
 
-        Manufacturer extraFoodShop = new Manufacturer("ExtraFoodShop");
-        Manufacturer healthyShop = new Manufacturer("HealthyShop");
-        Manufacturer glutenFreeShop = new Manufacturer("GlutenFreeShop");
+        ExtraFoodShop extraFoodShop = new ExtraFoodShop("ExtraFoodShop");
+        HealthyShop healthyShop = new HealthyShop("HealthyShop");
+        GlutenFreeShop glutenFreeShop = new GlutenFreeShop("GlutenFreeShop");
 
         Product milk = new Product(90, "Milk");
         Product sushi = new Product(70, "Sushi");
@@ -29,7 +29,7 @@ public class Food2Door {
         OrderProcessor orderProcessor = new OrderProcessor();
         System.out.println("");
 
-        if (orderProcessor.process(order1)){
+        if (orderProcessor.processOrder(order1)){
             OrderInformation orderInformation = new OrderInformation(order,true);
             System.out.println(orderInformation);
         }else{
