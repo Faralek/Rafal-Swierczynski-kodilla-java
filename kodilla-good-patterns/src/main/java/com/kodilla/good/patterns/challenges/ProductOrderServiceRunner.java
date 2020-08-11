@@ -10,17 +10,18 @@ public class ProductOrderServiceRunner {
 
         SaleProcessor processor = new SaleProcessor(informationService, saleService, saleRepository, saleStorage);
 
-        SaleProduct szczoteczka = new SaleProduct("Janusz",20,30);
-        SaleProduct gumka = new SaleProduct("Janusz",5,20);
-        SaleProduct wycieraczki = new SaleProduct("Janusz",10,50);
-        SaleProduct kubek = new SaleProduct("Janusz",10,15);
+        SaleProduct product1 = new SaleProduct("szczoteczka","Janusz",20,30);
+        SaleProduct product2 = new SaleProduct("gumka","Janusz",5,20);
+        SaleProduct product3 = new SaleProduct("wycieraczki","Janusz",10,50);
+        SaleProduct product4 = new SaleProduct("kubek","Janusz",10,15);
 
-        saleStorage.addProduct(szczoteczka);
-        saleStorage.addProduct(gumka);
-        saleStorage.addProduct(wycieraczki);
+        saleStorage.addProduct(product1);
+        saleStorage.addProduct(product2);
+        saleStorage.addProduct(product3);
+        saleStorage.addProduct(product4);
 
-        SaleRequest saleOrder = new SaleRequest("Yass","Tokary 1",szczoteczka);
-        SaleRequest saleOrder2 = new SaleRequest("Yass","Tokary 1", kubek);
+        SaleRequest saleOrder = new SaleRequest("Yass","Tokary 1",product1);
+        SaleRequest saleOrder2 = new SaleRequest("Yass","Tokary 1", product2);
         processor.process(saleOrder);
         processor.process(saleOrder2);
 

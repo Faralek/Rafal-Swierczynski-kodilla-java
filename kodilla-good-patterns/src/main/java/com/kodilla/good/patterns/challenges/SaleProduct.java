@@ -2,14 +2,20 @@ package com.kodilla.good.patterns.challenges;
 
 public class SaleProduct {
 
+    private final String productName;
     private final String seller;
     private final double shipmentCost;
     private final double price;
 
-    public SaleProduct(String seller, double shipmentCost, double price) {
+    public SaleProduct(String productName, String seller, double shipmentCost, double price) {
+        this.productName = productName;
         this.seller = seller;
         this.shipmentCost = shipmentCost;
         this.price = price;
+    }
+
+    public String getProductName() {
+        return productName;
     }
 
     public String getSeller() {
