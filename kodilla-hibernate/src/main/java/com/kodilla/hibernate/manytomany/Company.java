@@ -5,6 +5,11 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedQuery(
+        name = "Company.retrieveCompanyByThreeSigns",
+        query = "FROM companies Where name like 'xyz%' :XYZ"
+)
+
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
