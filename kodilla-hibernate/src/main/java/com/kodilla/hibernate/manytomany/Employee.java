@@ -5,11 +5,6 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedQuery(
-        name = "Employee.retrieveEmployeesByLastname",
-        query = "select FROM Employees WHERE Lastname == :LASTNAME"
-)
-
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
@@ -17,7 +12,6 @@ public class Employee {
     private String firstname;
     private String lastname;
     private List<Company> companies = new ArrayList<>();
-
     public Employee() {
     }
 
@@ -45,7 +39,6 @@ public class Employee {
     public String getLastname() {
         return lastname;
     }
-
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "JOIN_COMPANY_EMPLOYEE",

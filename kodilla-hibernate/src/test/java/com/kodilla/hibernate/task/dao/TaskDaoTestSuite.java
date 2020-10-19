@@ -18,6 +18,7 @@ import java.util.Optional;
 public class TaskDaoTestSuite {
     @Autowired
     private TaskDao taskDao;
+
     private static final String DESCRIPTION = "Test: Learn Hibernate";
 
     @Test
@@ -36,7 +37,6 @@ public class TaskDaoTestSuite {
         //CleanUp
         taskDao.deleteById(id);
     }
-
     @Test
     public void testTaskDaoFindByDuration() {
         //Given
@@ -54,7 +54,6 @@ public class TaskDaoTestSuite {
         int id = readTasks.get(0).getId();
         taskDao.deleteById(id);
     }
-
     @Test
     public void testTaskDaoSaveWithFinancialDetails() {
         //Given

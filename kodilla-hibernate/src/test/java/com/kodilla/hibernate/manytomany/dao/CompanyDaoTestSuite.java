@@ -9,14 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CompanyDaoTestSuite {
     @Autowired
     CompanyDao companyDao;
-    EmployeeDao employeeDao;
 
     @Test
     public void testSaveManyToMany(){
@@ -50,15 +47,9 @@ public class CompanyDaoTestSuite {
         int greyMatterId = greyMatter.getId();
 
         //Then
-
-        List<Company> companiesGRE = companyDao.retrieveCompanyByThreeSigns("gre");
-        List<Employee> smith = employeeDao.retrieveEmployeesByLastname("Smith");
-
         Assert.assertNotEquals(0, softwareMachineId);
         Assert.assertNotEquals(0, dataMaestersId);
         Assert.assertNotEquals(0, greyMatterId);
-        Assert.assertEquals(1,companiesGRE.size());
-        Assert.assertEquals(1,smith.size());
 
         //CleanUp
         try {
