@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 @SpringBootTest
 public class InvoiceDaoTestSuite {
     @Autowired
-    private ItemDao itemDao ;
+    private InvoiceDao invoiceDao;
 
 
     @Test
@@ -24,25 +24,19 @@ public class InvoiceDaoTestSuite {
         //given
         Product product = new Product("Kubek");
         Invoice invoice = new Invoice("123");
-        Invoice invoice1 = new Invoice("987");
-        Item item = new Item(new BigDecimal(100),2,new BigDecimal(200));
-        Item item1 = new Item(new BigDecimal(50),3,new BigDecimal(150));
+        Item item = new Item(new BigDecimal(100), 2, new BigDecimal(200));
+        Item item1 = new Item(new BigDecimal(50), 3, new BigDecimal(150));
 
-        product.getItems().add(item);
-        product.getItems().add(item1);
-
-        item.setInvoice(invoice);
-        item1.setInvoice(invoice1);
-
-        int id = product.getId();
+        invoice.getItems().add(item);
+        item.setProduct(product);
 
         //when
-        itemDao.save(item);
+        invoiceDao.save(invoice);
 
         //then
-        int size = product.getItems().size();
-        Assert.assertEquals(2,size);
+        long size = invoiceDao.count();
+        Assert.assertEquals(1, size);
         //clean up
-
+        invoiceDao.deleteAll();
     }
 }
