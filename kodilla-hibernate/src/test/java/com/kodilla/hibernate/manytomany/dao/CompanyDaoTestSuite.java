@@ -14,6 +14,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class CompanyDaoTestSuite {
     @Autowired
     CompanyDao companyDao;
+    @Autowired
+    EmployeeDao employeeDao;
 
     @Test
     public void testSaveManyToMany(){
@@ -52,12 +54,49 @@ public class CompanyDaoTestSuite {
         Assert.assertNotEquals(0, greyMatterId);
 
         //CleanUp
-        try {
-            companyDao.deleteById(softwareMachineId);
-            companyDao.deleteById(dataMaestersId);
-            companyDao.deleteById(greyMatterId);
-        } catch (Exception e) {
-            //do nothing
-        }
+
+        employeeDao.deleteAll();
+        companyDao.deleteAll();
+    }
+
+    @Test
+    public void testFindEmployeeByLastname(){
+        //Given
+        Employee johnSmith = new Employee("John", "Smith");
+        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
+        Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
+
+        //When
+        employeeDao.save(johnSmith);
+        employeeDao.save(stephanieClarckson);
+        employeeDao.save(lindaKovalsky);
+
+        //Then
+        Assert.assertEquals(1,employeeDao.retrieveEmployeeWithLastName("Smith").size());
+
+        //CleanUp
+        employeeDao.deleteAll();
+        companyDao.deleteAll();
+    }
+
+    @Test
+    public void testFindCompanyByThreeSigns(){
+        //Given
+        Company softwareMachine = new Company("Software Machine");
+        Company dataMaesters = new Company("Data Maesters");
+        Company greyMatter = new Company("Grey Matter");
+
+        //When
+        companyDao.save(softwareMachine);
+        companyDao.save(dataMaesters);
+        companyDao.save(greyMatter);
+
+        //Then
+        Assert.assertEquals(1,companyDao.retrieveCompanyStartedByXYZ("Gre%").size());
+        Assert.assertEquals(1,companyDao.retrieveCompanyStartedByXYZ("Dat%").size());
+        Assert.assertEquals(1,companyDao.retrieveCompanyStartedByXYZ("Sof%").size());
+        //CleanUp
+        employeeDao.deleteAll();
+        companyDao.deleteAll();
     }
 }
