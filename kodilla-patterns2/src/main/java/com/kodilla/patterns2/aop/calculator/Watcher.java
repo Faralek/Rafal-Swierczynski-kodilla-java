@@ -17,6 +17,12 @@ public class Watcher {
     private static final Logger LOGGER =
             LoggerFactory.getLogger(Watcher.class);
 
+    @Before("execution(* com.kodilla.patterns2.facade.api.OrderFacade.processOrder(..))" +
+    " && target(object)")
+    public void logEventFacade(Object object){
+        LOGGER.info("Processing order started on: " + object.getClass().getName());
+    }
+
     @Before("execution(* com.kodilla.patterns2.aop.calculator.Calculator.factorial(..))" +
             " && args(theNumber) && target(object)")
     public void logEvent(BigDecimal theNumber, Object object) {
