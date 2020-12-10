@@ -13,6 +13,8 @@ import java.util.List;
 @Repository
 public interface CompanyDao extends CrudRepository<Company, Integer> {
 
+    List<Company> retrieveCompanyWith(@Param("TEXT") String text);
+
     @Query(nativeQuery = true)
     List<Company> retrieveStartingWith(@Param("substring") String substring);
 

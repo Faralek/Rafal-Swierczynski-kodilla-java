@@ -91,6 +91,8 @@ public class CompanyDaoTestSuite {
         companyDao.save(dataMaesters);
         companyDao.save(greyMatter);
 
+
+
         //Then
         Assert.assertEquals(1,companyDao.retrieveStartingWith("Gre").size());
         Assert.assertEquals(1,companyDao.retrieveStartingWith("Dat").size());

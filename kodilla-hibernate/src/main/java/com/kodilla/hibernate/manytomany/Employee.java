@@ -1,5 +1,7 @@
 package com.kodilla.hibernate.manytomany;
 
+import org.springframework.data.repository.query.Param;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -8,6 +10,10 @@ import java.util.List;
 @NamedQuery(
         name = "Employee.retrieveEmployeeWithLastName",
         query = "FROM Employee WHERE lastname = :LASTNAME "
+)
+@NamedQuery(
+        name = "Employee.retrieveEmployeeWith",
+        query = "FROM Employee WHERE lastname LIKE :TEXT "
 )
 
 @Entity
@@ -68,5 +74,13 @@ public class Employee {
 
     private void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                '}';
     }
 }
