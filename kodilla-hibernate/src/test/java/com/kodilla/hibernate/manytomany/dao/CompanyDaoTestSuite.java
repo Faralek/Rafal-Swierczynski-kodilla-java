@@ -92,9 +92,9 @@ public class CompanyDaoTestSuite {
         companyDao.save(greyMatter);
 
         //Then
-        Assert.assertEquals(1,companyDao.retrieveCompanyStartedByXYZ("Gre%").size());
-        Assert.assertEquals(1,companyDao.retrieveCompanyStartedByXYZ("Dat%").size());
-        Assert.assertEquals(1,companyDao.retrieveCompanyStartedByXYZ("Sof%").size());
+        Assert.assertEquals(1,companyDao.retrieveStartingWith("Gre").size());
+        Assert.assertEquals(1,companyDao.retrieveStartingWith("Dat").size());
+        Assert.assertEquals(1,companyDao.retrieveStartingWith("Sof").size());
         //CleanUp
         employeeDao.deleteAll();
         companyDao.deleteAll();
